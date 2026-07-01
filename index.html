@@ -567,7 +567,7 @@ section{position:relative;}
   transition:transform .3s var(--ease), box-shadow .3s;
   padding:0;overflow:visible;
 }
-.advisor-btn img{width:82%;height:82%;object-fit:contain;display:block;}
+.advisor-btn img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;}
 .advisor-btn:hover{transform:translateY(-3px);}
 .advisor-btn .pulse{
   position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:var(--red);
@@ -578,6 +578,28 @@ section{position:relative;}
   animation:pulse 1.8s ease-out infinite;
 }
 @keyframes pulse{0%{transform:scale(.6);opacity:1;}100%{transform:scale(2.2);opacity:0;}}
+.advisor-hint{
+  position:fixed;bottom:104px;right:30px;z-index:599;
+  max-width:230px;background:var(--porcelain);color:var(--void);
+  padding:14px 16px;border-radius:10px;
+  font-size:13px;line-height:1.45;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+  opacity:0;transform:translateY(10px) scale(.96);
+  pointer-events:none;
+  transition:opacity .4s var(--ease), transform .4s var(--ease);
+}
+.advisor-hint.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;cursor:pointer;}
+.advisor-hint::after{
+  content:'';position:absolute;bottom:-7px;right:26px;
+  width:14px;height:14px;background:var(--porcelain);
+  transform:rotate(45deg);
+}
+.advisor-hint .hint-close{
+  position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;
+  background:var(--void);color:var(--porcelain);border:1px solid var(--line-strong);
+  display:flex;align-items:center;justify-content:center;font-size:12px;line-height:1;
+  cursor:pointer;
+}
 
 .advisor-panel{
   position:fixed;bottom:0;right:0;top:0;
@@ -962,6 +984,10 @@ footer{
 </footer>
 
 <!-- ADVISOR -->
+<div class="advisor-hint" id="advisorHint">
+  <span class="hint-close" id="advisorHintClose">×</span>
+  ¿Tienes dudas? Estoy aquí para responder tus preguntas sobre GarajeShield.
+</div>
 <button class="advisor-btn" id="advisorBtn" aria-label="Shield Advisor AI"><img src="https://res.cloudinary.com/dgp7uhps3/image/upload/v1782886253/IMG_8310_c3l8t3_dtm0v7.png" alt="Shield Advisor AI"><span class="pulse"></span></button>
 
 <div class="advisor-panel" id="advisorPanel">
@@ -1204,6 +1230,31 @@ advisorBtn.addEventListener('click', openAdvisor);
 document.getElementById('openAdvisorFinal').addEventListener('click', e=>{e.preventDefault(); openAdvisor();});
 advisorClose.addEventListener('click', closeAdvisor);
 scrim.addEventListener('click', closeAdvisor);
+
+/* cartel de invitación al chat, aparece a los 40s si el usuario no interactuó con el asesor */
+const advisorHint = document.getElementById('advisorHint');
+const advisorHintClose = document.getElementById('advisorHintClose');
+let advisorHintDismissed = false;
+
+function hideAdvisorHint(){
+  advisorHint.classList.remove('show');
+  advisorHintDismissed = true;
+}
+
+setTimeout(()=>{
+  if(advisorHintDismissed || advisorPanel.classList.contains('open')) return;
+  advisorHint.classList.add('show');
+}, 40000);
+
+advisorHint.addEventListener('click', ()=>{
+  hideAdvisorHint();
+  openAdvisor();
+});
+advisorHintClose.addEventListener('click', e=>{
+  e.stopPropagation();
+  hideAdvisorHint();
+});
+advisorBtn.addEventListener('click', hideAdvisorHint);
 
 function addMsg(text, who){
   const d = document.createElement('div');
