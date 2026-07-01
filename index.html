@@ -276,9 +276,12 @@ section{position:relative;}
 
 /* SOLUTION */
 .solution{
+  position:relative;
   background:var(--carbon);
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
+  background-image:linear-gradient(160deg, rgba(10,10,11,.9), rgba(20,20,22,.94)), url('https://res.cloudinary.com/dgp7uhps3/image/upload/v1782888159/IMG_8318_eeg2mt.webp');
+  background-size:cover;background-position:center;
 }
 .solution-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
 .solution-visual{
@@ -484,6 +487,43 @@ section{position:relative;}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease);}
 .faq-a p{color:var(--ash);font-size:14.5px;line-height:1.7;padding-bottom:26px;max-width:640px;}
 
+/* CONTACT FORM */
+.contact-form-section{
+  position:relative;background:var(--void);border-top:1px solid var(--line);
+  background-image:linear-gradient(160deg, rgba(10,10,11,.9), rgba(10,10,11,.94)), url('https://res.cloudinary.com/dgp7uhps3/image/upload/v1782888159/IMG_8317_kxcz9h.webp');
+  background-size:cover;background-position:center;
+}
+.contact-form{
+  max-width:640px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;
+}
+.form-field{display:flex;flex-direction:column;gap:8px;}
+.form-field.full{grid-column:1/-1;}
+.form-field label{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ash);
+}
+.form-field input,.form-field select,.form-field textarea{
+  background:var(--panel);border:1px solid var(--line-strong);color:var(--porcelain);
+  padding:13px 15px;border-radius:2px;font-size:14px;font-family:inherit;
+  transition:border-color .25s;
+}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{
+  outline:none;border-color:var(--red);
+}
+.form-field textarea{resize:vertical;min-height:90px;}
+.form-field select{appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6z' fill='%23807d78'/></svg>");
+  background-repeat:no-repeat;background-position:right 15px center;
+}
+.contact-form .btn{grid-column:1/-1;justify-self:start;margin-top:8px;border:none;cursor:pointer;}
+.form-note{grid-column:1/-1;font-size:12px;color:var(--ash-dim);margin-top:-6px;}
+.form-status{grid-column:1/-1;font-size:13px;color:var(--red);display:none;}
+.form-status.show{display:block;}
+@media(max-width:640px){
+  .contact-form{grid-template-columns:1fr;}
+}
+
 /* FINAL CTA */
 .final-cta{
   height:100vh;background:#000;
@@ -527,7 +567,7 @@ section{position:relative;}
   transition:transform .3s var(--ease), box-shadow .3s;
   padding:0;overflow:visible;
 }
-.advisor-btn img{width:60%;height:60%;object-fit:contain;display:block;}
+.advisor-btn img{width:82%;height:82%;object-fit:contain;display:block;}
 .advisor-btn:hover{transform:translateY(-3px);}
 .advisor-btn .pulse{
   position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:var(--red);
@@ -732,7 +772,7 @@ footer{
         <div class="layer-tag t3" data-layer="3"><b>Salida peatonal</b> — acceso lateral independiente</div>
         <div class="layer-tag t4" data-layer="4"><b>Motor eléctrico de inflado</b> — un solo uso, 5 minutos</div>
       </div>
-      <video class="layer-video" src="https://res.cloudinary.com/dgp7uhps3/video/upload/v1782886187/insta_video_45869_hwhpp9.mp4" autoplay muted loop playsinline></video>
+      <video class="layer-video scroll-video" src="https://res.cloudinary.com/dgp7uhps3/video/upload/v1782886187/insta_video_45869_hwhpp9.mp4" muted loop playsinline preload="none"></video>
     </div>
     <div class="anatomy-scrub">
       <span class="mono">DESPLEGADA</span>
@@ -774,7 +814,7 @@ footer{
       <div class="usecase-card"><img class="media" src="https://res.cloudinary.com/dgp7uhps3/image/upload/v1782888159/IMG_8317_kxcz9h.webp" alt="Corvette en cápsula GarajeShield" loading="lazy"><div class="usecase-num">B</div><div class="usecase-title">Clásicos</div><div class="usecase-sub">Restauraciones y piezas de colección</div></div>
       <div class="usecase-card"><img class="media" src="https://res.cloudinary.com/dgp7uhps3/image/upload/v1782888159/IMG_8319_luvc1w.webp" alt="Ford F150 en cápsula GarajeShield" loading="lazy"><div class="usecase-num">C</div><div class="usecase-title">SUV &amp; Pickups</div><div class="usecase-sub">Vehículos de uso familiar premium</div></div>
       <div class="usecase-card"><img class="media" src="https://res.cloudinary.com/dgp7uhps3/image/upload/v1782888160/IMG_8314_hru98q.webp" alt="Dodge SRT10 en cápsula GarajeShield" loading="lazy"><div class="usecase-num">D</div><div class="usecase-title">Coleccionistas</div><div class="usecase-sub">Flotas privadas multi-vehículo</div></div>
-      <div class="usecase-card"><video class="media" src="https://res.cloudinary.com/dgp7uhps3/video/upload/v1782886187/insta_video_45869_hwhpp9.mp4" autoplay muted loop playsinline></video><div class="usecase-num">E</div><div class="usecase-title">Eventos</div><div class="usecase-sub">Exhibiciones y resguardo temporal</div></div>
+      <div class="usecase-card"><video class="media scroll-video" src="https://res.cloudinary.com/dgp7uhps3/video/upload/v1782886187/insta_video_45869_hwhpp9.mp4" muted loop playsinline preload="none"></video><div class="usecase-num">E</div><div class="usecase-title">Eventos</div><div class="usecase-sub">Exhibiciones y resguardo temporal</div></div>
       <div class="usecase-card"><img class="media" src="https://res.cloudinary.com/dgp7uhps3/image/upload/v1782888159/IMG_8318_eeg2mt.webp" alt="Cápsula GarajeShield con entrada abierta" loading="lazy"><div class="usecase-num">F</div><div class="usecase-title">Cualquier objeto de valor</div><div class="usecase-sub">Botes, maquinaria, equipos — no solo vehículos</div></div>
     </div>
   </div>
@@ -789,7 +829,7 @@ footer{
     </div>
     <div class="deploy-grid">
       <div class="deploy-video-panel">
-        <video autoplay muted loop playsinline preload="none">
+        <video class="scroll-video" muted loop playsinline preload="none">
           <source src="https://res.cloudinary.com/dgp7uhps3/video/upload/v1782886188/insta_video_73607_ufheek.mp4" type="video/mp4">
         </video>
         <div class="deploy-video-tag mono">Registro real de despliegue</div>
@@ -818,7 +858,7 @@ footer{
     <div class="tile"><img src="https://res.cloudinary.com/dgp7uhps3/image/upload/v1782888159/IMG_8315_qif3ax.webp" alt="Ferrari dentro de la cápsula GarajeShield" loading="lazy"><div class="tile-glow"></div><span class="tile-tag">Ferrari — dentro de la cápsula</span></div>
     <div class="tile"><img src="https://res.cloudinary.com/dgp7uhps3/image/upload/v1782888159/IMG_8318_eeg2mt.webp" alt="Cápsula GarajeShield con entrada abierta" loading="lazy"><div class="tile-glow"></div><span class="tile-tag">Cápsula — entrada abierta</span></div>
     <div class="tile"><img src="https://res.cloudinary.com/dgp7uhps3/image/upload/v1782888159/IMG_8319_luvc1w.webp" alt="Ford F150 dentro de la cápsula GarajeShield" loading="lazy"><div class="tile-glow"></div><span class="tile-tag">Ford F150 — dentro de la cápsula</span></div>
-    <div class="tile"><video src="https://res.cloudinary.com/dgp7uhps3/video/upload/v1782888161/insta_video_55523_c3wqau.mp4" autoplay muted loop playsinline></video><div class="tile-glow"></div><span class="tile-tag">Video — recorrido completo</span></div>
+    <div class="tile"><video class="scroll-video" src="https://res.cloudinary.com/dgp7uhps3/video/upload/v1782888161/insta_video_55523_c3wqau.mp4" muted loop playsinline preload="none"></video><div class="tile-glow"></div><span class="tile-tag">Video — recorrido completo</span></div>
   </div>
 </section>
 
@@ -850,6 +890,48 @@ footer{
   </div>
 </section>
 
+<!-- CONTACT FORM -->
+<section class="contact-form-section section-pad" id="contacto">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Cuéntanos qué quieres proteger.</h2>
+      <p class="section-note">Completa el formulario y un especialista te contacta directamente.</p>
+    </div>
+    <form class="contact-form" id="leadForm">
+      <div class="form-field">
+        <label for="fNombre">Nombre</label>
+        <input type="text" id="fNombre" name="nombre" placeholder="Tu nombre" required>
+      </div>
+      <div class="form-field">
+        <label for="fTelefono">Teléfono</label>
+        <input type="tel" id="fTelefono" name="telefono" placeholder="+56 9 1234 5678" required>
+      </div>
+      <div class="form-field">
+        <label for="fCiudad">Ciudad</label>
+        <input type="text" id="fCiudad" name="ciudad" placeholder="Ej: Santiago">
+      </div>
+      <div class="form-field">
+        <label for="fVehiculo">Tipo de vehículo</label>
+        <select id="fVehiculo" name="vehiculo">
+          <option value="">Selecciona una opción</option>
+          <option>Deportivo</option>
+          <option>Clásico / colección</option>
+          <option>SUV o pickup</option>
+          <option>Flota privada</option>
+          <option>Otro objeto de valor</option>
+        </select>
+      </div>
+      <div class="form-field full">
+        <label for="fMensaje">Mensaje (opcional)</label>
+        <textarea id="fMensaje" name="mensaje" placeholder="Cuéntanos tu caso: modelo, espacio disponible, plazos, etc."></textarea>
+      </div>
+      <p class="form-note">Al enviar, te contactaremos por WhatsApp con la información recibida.</p>
+      <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+      <p class="form-status" id="formStatus">Abriendo WhatsApp con tu solicitud…</p>
+    </form>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <section class="final-cta" id="cta-final">
   <div class="final-light"></div>
@@ -868,7 +950,7 @@ footer{
       <div class="logo"><img src="https://res.cloudinary.com/dgp7uhps3/image/upload/v1782886253/IMG_8310_c3l8t3_dtm0v7.png" alt="GarajeShield"></div>
       <div class="footer-cols">
         <div class="footer-col"><h4>Producto</h4><a href="#solucion">La cápsula</a><a href="#tecnologia">Tecnología</a><a href="#instalacion">Instalación</a></div>
-        <div class="footer-col"><h4>Compañía</h4><a href="#casos">Casos de uso</a><a href="#testimonios">Clientes</a><a href="#faq">Preguntas</a></div>
+        <div class="footer-col"><h4>Compañía</h4><a href="#casos">Casos de uso</a><a href="#testimonios">Clientes</a><a href="#faq">Preguntas</a><a href="#contacto">Formulario</a></div>
         <div class="footer-col"><h4>Contacto</h4><a href="#">hola@garajeshield.cl</a><a href="https://instagram.com/garajeshield.cl" target="_blank" rel="noopener">@garajeshield.cl</a></div>
       </div>
     </div>
@@ -936,7 +1018,6 @@ gsap.to('.hero-video-overlay', {
 /* demo video modal */
 const demoModal = document.getElementById('demoModal');
 const demoVideo = document.getElementById('demoVideo');
-const heroVideo = document.getElementById('heroVideo');
 document.getElementById('openDemo').addEventListener('click', ()=>{
   demoModal.classList.add('open');
   demoVideo.currentTime = 0;
@@ -949,7 +1030,37 @@ function closeDemo(){
 document.getElementById('demoClose').addEventListener('click', closeDemo);
 demoModal.addEventListener('click', e=>{ if(e.target===demoModal) closeDemo(); });
 window.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDemo(); });
-if(heroVideo){ heroVideo.play().catch(()=>{}); }
+const heroVideo = document.getElementById('heroVideo');
+if(heroVideo){
+  heroVideo.muted = true;
+  heroVideo.playsInline = true;
+  const tryPlayHero = ()=> heroVideo.play().catch(()=>{});
+  tryPlayHero();
+  heroVideo.addEventListener('loadedmetadata', tryPlayHero);
+  heroVideo.addEventListener('canplay', tryPlayHero);
+  document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tryPlayHero(); });
+  // fallback: algunos navegadores móviles bloquean el autoplay hasta el primer gesto del usuario
+  const unlockHero = ()=>{ tryPlayHero(); window.removeEventListener('pointerdown', unlockHero); window.removeEventListener('touchstart', unlockHero); window.removeEventListener('scroll', unlockHero); };
+  window.addEventListener('pointerdown', unlockHero, {once:true});
+  window.addEventListener('touchstart', unlockHero, {once:true});
+  window.addEventListener('scroll', unlockHero, {once:true});
+}
+
+/* videos que se reproducen automáticamente solo cuando entran en pantalla (ahorra batería/datos) */
+const scrollVideos = document.querySelectorAll('.scroll-video');
+if(scrollVideos.length){
+  const videoObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      const v = entry.target;
+      if(entry.isIntersecting){
+        v.play().catch(()=>{});
+      } else {
+        v.pause();
+      }
+    });
+  }, {threshold:0.25});
+  scrollVideos.forEach(v=> videoObserver.observe(v));
+}
 
 /* generic reveal for section heads + rows */
 document.querySelectorAll('.section-title, .section-note').forEach(el=>{
@@ -1054,6 +1165,28 @@ const scrim = document.getElementById('scrim');
 
 const ADVISOR_ENDPOINT = '/api/advisor';
 const WHATSAPP_NUMBER = '56900000000'; // TODO: reemplazar por el número real del equipo comercial
+
+/* formulario de contacto */
+const leadForm = document.getElementById('leadForm');
+if(leadForm){
+  leadForm.addEventListener('submit', e=>{
+    e.preventDefault();
+    const f = new FormData(leadForm);
+    const lines = [
+      'Nueva solicitud — Formulario GarajeShield',
+      `Nombre: ${f.get('nombre')||'-'}`,
+      `Teléfono: ${f.get('telefono')||'-'}`,
+      `Ciudad: ${f.get('ciudad')||'-'}`,
+      `Tipo de vehículo: ${f.get('vehiculo')||'-'}`,
+      `Mensaje: ${f.get('mensaje')||'-'}`
+    ];
+    const waText = encodeURIComponent(lines.join('\n'));
+    const status = document.getElementById('formStatus');
+    status.classList.add('show');
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`, '_blank');
+    setTimeout(()=>{ leadForm.reset(); status.classList.remove('show'); }, 4000);
+  });
+}
 
 let conversation = []; // { role: 'user'|'assistant', content: string }
 let waitingReply = false;
